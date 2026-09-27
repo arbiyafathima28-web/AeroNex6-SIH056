@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Leaflet map styles reset & dark mode styling */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #f1f5f9;
+}
+
+.dark .leaflet-container {
+  background-color: #0b1120;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.dark .leaflet-popup-content-wrapper {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  display: none !important;
+}
+
+/* Custom scrollbars for data tables and panels */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+}
+
+/* Custom Theme-Adaptive & Carto Basemap Styling for Leaflet (Watermark-Free) */
+.leaflet-basemap-custom-dark .leaflet-tile-pane,
+.leaflet-basemap-carto-dark .leaflet-tile-pane {
+  filter: invert(100%) hue-rotate(180deg) saturate(0.4) brightness(0.85) contrast(1.15);
+  transition: filter 0.3s ease;
+}
+
+.leaflet-basemap-custom-light .leaflet-tile-pane {
+  filter: contrast(1.05) brightness(1.02) saturate(0.95);
+  transition: filter 0.3s ease;
+}
+
+.leaflet-basemap-carto-light .leaflet-tile-pane {
+  filter: grayscale(0.9) contrast(1.06) brightness(1.03);
+  transition: filter 0.3s ease;
+}
+
+/* Marker Cluster halo animations */
+@keyframes cluster-pulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.75;
+  }
+}
+
+.cluster-halo-pulse {
+  animation: cluster-pulse 2.6s infinite ease-in-out;
+}
+

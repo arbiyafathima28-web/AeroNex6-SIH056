@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix AeroNex6",
+  "description": "Real-Time Airfare Price Index \u0026 CPI Analytics for India — Automated Fare Intelligence for MoSPI ",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

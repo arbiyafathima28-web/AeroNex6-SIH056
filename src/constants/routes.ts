@@ -1,0 +1,51 @@
+import { RouteDefinition } from '../types';
+
+export const ROUTES: RouteDefinition[] = [
+  // Metro-to-Metro High Density Trunk Routes
+  { id: 'DEL-BOM', origin: 'DEL', destination: 'BOM', distanceKm: 1148, dgcaWeight: 11.2, basePrice: 4850 },
+  { id: 'BOM-DEL', origin: 'BOM', destination: 'DEL', distanceKm: 1148, dgcaWeight: 11.0, basePrice: 4900 },
+  { id: 'DEL-BLR', origin: 'DEL', destination: 'BLR', distanceKm: 1740, dgcaWeight: 8.5, basePrice: 5600 },
+  { id: 'BLR-DEL', origin: 'BLR', destination: 'DEL', distanceKm: 1740, dgcaWeight: 8.3, basePrice: 5650 },
+  { id: 'BOM-BLR', origin: 'BOM', destination: 'BLR', distanceKm: 842, dgcaWeight: 6.2, basePrice: 3800 },
+  { id: 'BLR-BOM', origin: 'BLR', destination: 'BOM', distanceKm: 842, dgcaWeight: 6.0, basePrice: 3850 },
+  { id: 'DEL-CCU', origin: 'DEL', destination: 'CCU', distanceKm: 1305, dgcaWeight: 5.1, basePrice: 4950 },
+  { id: 'CCU-DEL', origin: 'CCU', destination: 'DEL', distanceKm: 1305, dgcaWeight: 5.0, basePrice: 4900 },
+  { id: 'BLR-HYD', origin: 'BLR', destination: 'HYD', distanceKm: 502, dgcaWeight: 3.8, basePrice: 2850 },
+  { id: 'HYD-BLR', origin: 'HYD', destination: 'BLR', distanceKm: 502, dgcaWeight: 3.7, basePrice: 2800 },
+  { id: 'MAA-DEL', origin: 'MAA', destination: 'DEL', distanceKm: 1760, dgcaWeight: 3.5, basePrice: 5500 },
+  { id: 'DEL-MAA', origin: 'DEL', destination: 'MAA', distanceKm: 1760, dgcaWeight: 3.5, basePrice: 5550 },
+  { id: 'BOM-HYD', origin: 'BOM', destination: 'HYD', distanceKm: 620, dgcaWeight: 2.8, basePrice: 3100 },
+  { id: 'HYD-BOM', origin: 'HYD', destination: 'BOM', distanceKm: 620, dgcaWeight: 2.7, basePrice: 3150 },
+  { id: 'BOM-MAA', origin: 'BOM', destination: 'MAA', distanceKm: 1033, dgcaWeight: 2.4, basePrice: 4200 },
+  { id: 'MAA-BOM', origin: 'MAA', destination: 'BOM', distanceKm: 1033, dgcaWeight: 2.3, basePrice: 4250 },
+  { id: 'DEL-HYD', origin: 'DEL', destination: 'HYD', distanceKm: 1253, dgcaWeight: 2.5, basePrice: 4600 },
+  { id: 'HYD-DEL', origin: 'HYD', destination: 'DEL', distanceKm: 1253, dgcaWeight: 2.4, basePrice: 4650 },
+  { id: 'BOM-CCU', origin: 'BOM', destination: 'CCU', distanceKm: 1654, dgcaWeight: 2.0, basePrice: 5400 },
+  { id: 'CCU-BOM', origin: 'CCU', destination: 'BOM', distanceKm: 1654, dgcaWeight: 1.9, basePrice: 5350 },
+
+  // Tier-1 to Tier-2 / Leisure / Regional Hubs
+  { id: 'DEL-AMD', origin: 'DEL', destination: 'AMD', distanceKm: 775, dgcaWeight: 1.8, basePrice: 3400 },
+  { id: 'AMD-DEL', origin: 'AMD', destination: 'DEL', distanceKm: 775, dgcaWeight: 1.7, basePrice: 3450 },
+  { id: 'BOM-AMD', origin: 'BOM', destination: 'AMD', distanceKm: 442, dgcaWeight: 1.6, basePrice: 2700 },
+  { id: 'AMD-BOM', origin: 'AMD', destination: 'BOM', distanceKm: 442, dgcaWeight: 1.5, basePrice: 2750 },
+  { id: 'DEL-PNQ', origin: 'DEL', destination: 'PNQ', distanceKm: 1173, dgcaWeight: 1.4, basePrice: 4700 },
+  { id: 'PNQ-DEL', origin: 'PNQ', destination: 'DEL', distanceKm: 1173, dgcaWeight: 1.3, basePrice: 4750 },
+  { id: 'BLR-PNQ', origin: 'BLR', destination: 'PNQ', distanceKm: 734, dgcaWeight: 1.2, basePrice: 3300 },
+  { id: 'PNQ-BLR', origin: 'PNQ', destination: 'BLR', distanceKm: 734, dgcaWeight: 1.2, basePrice: 3350 },
+  { id: 'BOM-GOI', origin: 'BOM', destination: 'GOI', distanceKm: 435, dgcaWeight: 1.4, basePrice: 2950 },
+  { id: 'GOI-BOM', origin: 'GOI', destination: 'BOM', distanceKm: 435, dgcaWeight: 1.3, basePrice: 2900 },
+  { id: 'DEL-GOI', origin: 'DEL', destination: 'GOI', distanceKm: 1515, dgcaWeight: 1.4, basePrice: 5300 },
+  { id: 'GOI-DEL', origin: 'GOI', destination: 'DEL', distanceKm: 1515, dgcaWeight: 1.3, basePrice: 5350 },
+  { id: 'BLR-COK', origin: 'BLR', destination: 'COK', distanceKm: 367, dgcaWeight: 1.0, basePrice: 2500 },
+  { id: 'COK-BLR', origin: 'COK', destination: 'BLR', distanceKm: 367, dgcaWeight: 1.0, basePrice: 2500 },
+  { id: 'BOM-COK', origin: 'BOM', destination: 'COK', distanceKm: 1067, dgcaWeight: 0.9, basePrice: 4100 },
+  { id: 'COK-BOM', origin: 'COK', destination: 'BOM', distanceKm: 1067, dgcaWeight: 0.9, basePrice: 4150 },
+  { id: 'DEL-LKO', origin: 'DEL', destination: 'LKO', distanceKm: 420, dgcaWeight: 0.8, basePrice: 2600 },
+  { id: 'LKO-DEL', origin: 'LKO', destination: 'DEL', distanceKm: 420, dgcaWeight: 0.8, basePrice: 2600 },
+  { id: 'DEL-JAI', origin: 'DEL', destination: 'JAI', distanceKm: 232, dgcaWeight: 0.6, basePrice: 2100 },
+  { id: 'JAI-DEL', origin: 'JAI', destination: 'DEL', distanceKm: 232, dgcaWeight: 0.6, basePrice: 2100 },
+  { id: 'DEL-GAU', origin: 'DEL', destination: 'GAU', distanceKm: 1458, dgcaWeight: 0.8, basePrice: 5100 },
+  { id: 'CCU-GAU', origin: 'CCU', destination: 'GAU', distanceKm: 508, dgcaWeight: 0.7, basePrice: 2800 },
+];
+
+export const ROUTE_MAP = new Map<string, RouteDefinition>(ROUTES.map(r => [r.id, r]));

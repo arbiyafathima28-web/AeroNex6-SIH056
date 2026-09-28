@@ -25,7 +25,8 @@ export const AirfareIndexView: React.FC = () => {
     broadcastSpikeAlerts, 
     simulatePriceShock, 
     spikeThresholdPercent, 
-    navigateToRoute 
+    navigateToRoute,
+    todayFormatted,
   } = useData();
   const { t, language } = useLanguage();
 
@@ -69,8 +70,10 @@ export const AirfareIndexView: React.FC = () => {
           </p>
         </div>
 
-        <div className="text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
-          Base Reference: 2026-Q1 = 100.0
+        <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span>Base: 2026-Q1 = 100.0</span>
+          <span>•</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{t.today}: {todayFormatted}</span>
         </div>
       </div>
 

@@ -31,7 +31,9 @@ export const Header: React.FC = () => {
     triggerSimulateNewCollection, 
     isSimulating,
     detectedSpikes,
-    spikeThresholdPercent
+    spikeThresholdPercent,
+    todayFormatted,
+    syncWithToday,
   } = useData();
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
@@ -205,6 +207,17 @@ export const Header: React.FC = () => {
                 onClose={() => setIsAlertsOpen(false)}
               />
             </div>
+
+            {/* Today Live Indicator & Synchronize Button */}
+            <button
+              onClick={() => syncWithToday()}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/60 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 rounded-md transition-colors whitespace-nowrap shadow-2xs"
+              title={`${t.todayLiveIndicator} (${todayFormatted}). Click to re-sync.`}
+            >
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="hidden sm:inline font-mono">{t.today}: {todayFormatted}</span>
+              <span className="sm:hidden font-mono">{todayFormatted}</span>
+            </button>
 
             {/* Simulate Batch Button */}
             <button

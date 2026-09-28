@@ -18,9 +18,14 @@ function seededRandom(seed: number) {
   return x - Math.floor(x);
 }
 
+export function getAnchorDate(): Date {
+  const now = new Date();
+  return new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0));
+}
+
 export function generateSyntheticObservations(baseDaysCount: number = 45): FareObservation[] {
   const observations: FareObservation[] = [];
-  const today = new Date('2026-09-26T12:00:00Z');
+  const today = getAnchorDate();
   
   let recordIdCounter = 10000;
   let globalSeed = 42;
@@ -137,7 +142,7 @@ export function generateSyntheticObservations(baseDaysCount: number = 45): FareO
 
 // Generate an incremental fresh batch for "Simulate New Collection"
 export function generateNewBatchObservations(batchSize: number = 240): FareObservation[] {
-  const today = new Date('2026-09-26T12:00:00Z');
+  const today = getAnchorDate();
   const dateStr = today.toISOString().split('T')[0];
   const nowIso = new Date().toISOString();
   const batch: FareObservation[] = [];

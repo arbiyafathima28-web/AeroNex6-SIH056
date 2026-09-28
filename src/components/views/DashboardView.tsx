@@ -15,7 +15,7 @@ import {
   Tooltip, 
   ResponsiveContainer 
 } from 'recharts';
-import { TrendingUp, TrendingDown, ArrowRight, ShieldCheck, Clock, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { TrendingUp, TrendingDown, ArrowRight, ShieldCheck, Clock, CheckCircle2, AlertTriangle, RefreshCw, Calendar } from 'lucide-react';
 
 export const DashboardView: React.FC = () => {
   const { 
@@ -24,7 +24,9 @@ export const DashboardView: React.FC = () => {
     navigateToRoute, 
     setActiveView,
     detectedSpikes,
-    spikeThresholdPercent
+    spikeThresholdPercent,
+    todayFormatted,
+    syncWithToday,
   } = useData();
   const { t, language } = useLanguage();
 
@@ -103,11 +105,25 @@ export const DashboardView: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-slate-500 dark:text-slate-400 shrink-0">
+          <div className="flex items-center gap-1.5 font-mono px-2.5 py-1 rounded-md bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/70">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-semibold">{t.today}: {todayFormatted}</span>
+          </div>
+
           <div className="flex items-center gap-1.5 font-mono">
             <Clock className="w-3.5 h-3.5 text-slate-400" />
             <span>{t.lastUpdated}: {pipelineResult.stats.lastProcessedAt}</span>
           </div>
+
+          <button
+            onClick={() => syncWithToday()}
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer shadow-2xs"
+            title={t.syncTodayFares}
+          >
+            <RefreshCw className="w-3 h-3 text-sky-500" />
+            <span>{t.updateToToday}</span>
+          </button>
         </div>
       </div>
  

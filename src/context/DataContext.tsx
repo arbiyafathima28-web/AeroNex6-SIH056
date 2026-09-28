@@ -48,6 +48,11 @@ interface DataContextType {
   detectedSpikes: AirfarePriceSpike[];
   broadcastSpikeAlerts: (customSpikes?: AirfarePriceSpike[]) => void;
   simulatePriceShock: (targetRouteId?: string, surgePercent?: number) => void;
+
+  // Real-Time Calendar Date Synchronization
+  todayDateStr: string;
+  todayFormatted: string;
+  syncWithToday: () => void;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -56,7 +61,22 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [activeView, setActiveView] = useState<ActiveView>('dashboard');
   const [selectedRouteId, setSelectedRouteId] = useState<string>('DEL-BOM');
 
-  // Initialize master dataset with 45-day realistic observations
+  // Compute today's date representations
+  const todayDateStr = useMemo(() => {
+    const d = new Date();
+    return d.toISOString().split('T')[0];
+  }, []);
+
+  const todayFormatted = useMemo(() => {
+    const d = new Date();
+    return d.toLocaleDateString('en-IN', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+  }, []);
+
+  // Initialize master dataset with 45-day realistic observations anchored to today
   const [masterRecords, setMasterRecords] = useState<FareObservation[]>(() => {
     return generateSyntheticObservations(45);
   });
@@ -177,6 +197,17 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   }, [masterRecords, addToast]);
 
+  // Synchronize all dataset observations, trends, and indices to today's date
+  const syncWithToday = useCallback(() => {
+    const freshRecords = generateSyntheticObservations(45);
+    setMasterRecords(freshRecords);
+    addToast(
+      'Updated to Today',
+      `All 45-day airfare records and indices synchronized to today's live schedule (${todayFormatted}).`,
+      'success',
+      4000
+    );
+  }, [addToast, todayFormatted]);
 
   const isSimulatingRef = useRef(false);
 
@@ -328,6 +359,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         detectedSpikes,
         broadcastSpikeAlerts,
         simulatePriceShock,
+        todayDateStr,
+        todayFormatted,
+        syncWithToday,
       }}
     >
       {children}

@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 
 export const SystemHealthView: React.FC = () => {
-  const { pipelineResult, triggerSimulateNewCollection, isSimulating } = useData();
+  const { pipelineResult, triggerSimulateNewCollection, isSimulating, todayFormatted } = useData();
   const { t, language } = useLanguage();
   const stats = pipelineResult.stats;
 
@@ -79,9 +79,12 @@ export const SystemHealthView: React.FC = () => {
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 font-sans">
             {t.systemHealthPage.title}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            {t.systemHealthPage.description}
-          </p>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-mono">
+              {t.today}: {todayFormatted} • {t.systemHealthPage.description}
+            </p>
+          </div>
         </div>
 
         <button
